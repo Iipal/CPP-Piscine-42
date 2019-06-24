@@ -1,4 +1,6 @@
 **.o
 **/megaphone
+**/phonebook
+**/account
 .vscode/
 .VScode/
