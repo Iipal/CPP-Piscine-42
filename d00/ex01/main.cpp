@@ -13,11 +13,7 @@ void    fnptrClear(PhoneBookContact *pb);
 void    fnptrAdd(PhoneBookContact *pb);
 void    fnptrSeach(PhoneBookContact *pb);
 
-static const fnptrProcessCommand gCommandsQueueFunctions[5] = { fnptrExit,
-                                                                fnptrHelp,
-                                                                fnptrClear,
-                                                                fnptrAdd,
-                                                                fnptrSeach};
+static const fnptrProcessCommand gCommandsQueueFunctions[MAX_COMMANDS] = { fnptrExit, fnptrHelp, fnptrClear, fnptrAdd, fnptrSeach };
 
 static void processCurrentCommand(const std::string currCommand, PhoneBookContact *phoneBook) {
     size_t  i = ~0ULL;
