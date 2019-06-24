@@ -4,8 +4,8 @@
 
 static size_t   gMaxCurrentlyAddedContacts;
 
-void    fnptr_exit(PhoneBookContact *pb) { (void)pb; exit(EXIT_SUCCESS); }
-void    fnptr_add(PhoneBookContact *pb) {
+void    fnptrExit(PhoneBookContact *pb) { (void)pb; exit(EXIT_SUCCESS); }
+void    fnptrAdd(PhoneBookContact *pb) {
     std::string temp;
 
     if (MAX_PHONE_BOOK_CONTACTS <= gMaxCurrentlyAddedContacts) {
@@ -34,7 +34,7 @@ static void printAllContacts(PhoneBookContact *pb) {
         pb[i].printShortWrappedInfo(i + 1);
 }
 
-void    fnptr_seach(PhoneBookContact *pb) {
+void    fnptrSeach(PhoneBookContact *pb) {
     if (!gMaxCurrentlyAddedContacts) {
         std::cout << "No contacts currently exists in your phone book" << std::endl;
         return ;
@@ -54,9 +54,9 @@ void    fnptr_seach(PhoneBookContact *pb) {
 typedef void (*fnptrProcessCommand)(PhoneBookContact*);
 
 static const std::string gCommandsQueue[MAX_COMMANDS] = { "EXIT", "ADD", "SEARCH" };
-static const fnptrProcessCommand gCommandsQueueFunctions[MAX_COMMANDS] = { fnptr_exit,
-                                                                            fnptr_add,
-                                                                            fnptr_seach };
+static const fnptrProcessCommand gCommandsQueueFunctions[MAX_COMMANDS] = { fnptrExit,
+                                                                            fnptrAdd,
+                                                                            fnptrSeach };
 
 static void processCurrentCommand(const std::string currCommand, PhoneBookContact *phoneBook) {
     size_t  i = ~0ULL;
