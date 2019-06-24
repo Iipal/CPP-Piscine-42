@@ -1,11 +1,11 @@
-NAME := megaphone
+NAME := phonebook
 NPWD := $(CURDIR)/$(NAME)
 
 CC := clang++ -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := clang++ -march=native -mtune=native -g3 -D DEBUG -fsanitize=address
 CFLAGS := -Wall -Wextra -Werror -Wunused
 
-SRCS := $(abspath megaphone.cpp)
+SRCS := $(abspath phonebook.cpp)
 OBJ := $(SRCS:.cpp=.o)
 
 DEL := rm -rf
