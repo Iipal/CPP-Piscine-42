@@ -3,6 +3,8 @@
 PhoneBookContact::PhoneBookContact(){}
 PhoneBookContact::~PhoneBookContact(){}
 
+size_t  PhoneBookContact::_maxCurrentlyAddedContacts = 0;
+
 void    PhoneBookContact::printShortWrappedInfo(int index){
     std::string _firstName   = this->firstName,
                 _lastName    = this->lastName,
@@ -36,4 +38,23 @@ void    PhoneBookContact::printAllInfo(int index) {
         << " Underwear color: " << this->underwearColor << std::endl
         << " Darkest secret: " << this->darkestSecret << std::endl;
 
+}
+
+void    PhoneBookContact::addNewContactData(void) {
+    std::string temp;
+
+    std::cout << "Enter first name: "; this->firstName = this->_pbc_getline(&temp);
+    std::cout << "Enter last name: "; this->lastName = this->_pbc_getline(&temp);
+    std::cout << "Enter nickname: "; this->nickname = this->_pbc_getline(&temp);
+    std::cout << "Enter login: "; this->login = this->_pbc_getline(&temp);
+    std::cout << "Enter postal address: "; this->postalAddress = this->_pbc_getline(&temp);
+    std::cout << "Enter email address: "; this->emailAddress = this->_pbc_getline(&temp);
+    std::cout << "Enter phone number: "; this->phoneNumber = this->_pbc_getline(&temp);
+    std::cout << "Enter birthday date: "; this->birthdayDate = this->_pbc_getline(&temp);
+    std::cout << "Enter favorite meal: "; this->favoriteMeal = this->_pbc_getline(&temp);
+    std::cout << "Enter underwear color: "; this->underwearColor = this->_pbc_getline(&temp);
+    std::cout << "Enter darkest secret: "; this->darkestSecret = this->_pbc_getline(&temp);
+    std::cout << "\tSuccessfully added new contact" << std::endl;
+
+    ++PhoneBookContact::_maxCurrentlyAddedContacts;
 }
