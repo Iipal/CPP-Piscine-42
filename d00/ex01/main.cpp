@@ -2,7 +2,33 @@
 
 # define MAX_COMMANDS 3
 
+static const std::string gCommandsQueue[MAX_COMMANDS] = { "EXIT", "ADD", "SEARCH" };
+
+typedef void (*fnptrProcessCommand)(PhoneBookContact*);
+void    fnptrExit(PhoneBookContact *pb);
+void    fnptrAdd(PhoneBookContact *pb);
+void    fnptrSeach(PhoneBookContact *pb);
+void    fnptrHelp(PhoneBookContact *pb);
+
+static const fnptrProcessCommand gCommandsQueueFunctions[] = { fnptrExit,
+                                                                fnptrAdd,
+                                                                fnptrSeach,
+                                                                fnptrHelp };
+
+static void processCurrentCommand(const std::string currCommand, PhoneBookContact *phoneBook) {
+    size_t  i = ~0ULL;
+
+    if (currCommand == "HELP")
+        gCommandsQueueFunctions[MAX_COMMANDS](phoneBook);
+    else
+        while (MAX_COMMANDS > ++i)
+            if (gCommandsQueue[i] == currCommand)
+                gCommandsQueueFunctions[i](phoneBook);
+}
+
 void    fnptrExit(PhoneBookContact *pb) { (void)pb; exit(EXIT_SUCCESS); }
+void    fnptrHelp(PhoneBookContact *pb) { (void)pb; std::cout << "HELP: ADD | SEARCH | EXIT" << std::endl; }
+
 void    fnptrAdd(PhoneBookContact *pb) {
     std::string temp;
 
@@ -38,27 +64,11 @@ void    fnptrSeach(PhoneBookContact *pb) {
     pb[index - 1].printAllInfo(index);
 }
 
-typedef void (*fnptrProcessCommand)(PhoneBookContact*);
-
-static const std::string gCommandsQueue[MAX_COMMANDS] = { "EXIT", "ADD", "SEARCH" };
-static const fnptrProcessCommand gCommandsQueueFunctions[MAX_COMMANDS] = { fnptrExit,
-                                                                            fnptrAdd,
-                                                                            fnptrSeach };
-
-static void processCurrentCommand(const std::string currCommand, PhoneBookContact *phoneBook) {
-    size_t  i = ~0ULL;
-
-    while (MAX_COMMANDS > ++i)
-        if (gCommandsQueue[i] == currCommand)
-            gCommandsQueueFunctions[i](phoneBook);
-}
-
 int main(void) {
     PhoneBookContact phoneBook[MAX_PHONE_BOOK_CONTACTS];
     std::string currCommand;
     bool quit = false;
 
-    std::cout << "ADD | SEARCH | EXIT" << std::endl;
     while (!quit) {
         std::cout << "@phonebook: "; std::getline(std::cin, currCommand);
         if (std::cin.bad() || std::cin.eof()) {
