@@ -5,7 +5,7 @@ CC := clang++ -march=native -mtune=native -Ofast -flto -pipe
 CC_DEBUG := clang++ -march=native -mtune=native -g3 -D DEBUG -fsanitize=address
 CFLAGS := -Wall -Wextra -Werror -Wunused
 
-SRCS := $(abspath phonebook.cpp)
+SRCS := $(abspath $(wildcard *.cpp))
 OBJ := $(SRCS:.cpp=.o)
 
 DEL := rm -rf
