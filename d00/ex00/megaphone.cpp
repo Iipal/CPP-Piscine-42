@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstddef>
 
 static char *__strupr(char *src) {
     size_t  i = ~0ULL;
