@@ -2,6 +2,7 @@
 
 # include <iomanip>
 # include <iostream>
+# include <stdlib.h>
 
 # define MAX_PHONE_BOOK_CONTACTS 8
 # define SHORT_OUTPUT_WRAP 10

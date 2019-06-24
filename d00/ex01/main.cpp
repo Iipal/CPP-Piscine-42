@@ -1,33 +1,35 @@
 #include "phonebook.hpp"
 
-# define MAX_COMMANDS 3
+# define MAX_COMMANDS 5
 
-static const std::string gCommandsQueue[MAX_COMMANDS] = { "EXIT", "ADD", "SEARCH" };
+static const std::string gCommandsQueue[MAX_COMMANDS] = { "EXIT", "HELP", "CLEAR", "ADD", "SEARCH" };
 
 typedef void (*fnptrProcessCommand)(PhoneBookContact*);
 void    fnptrExit(PhoneBookContact *pb);
-void    fnptrAdd(PhoneBookContact *pb);
-void    fnptrSeach(PhoneBookContact *pb);
 void    fnptrHelp(PhoneBookContact *pb);
 
-static const fnptrProcessCommand gCommandsQueueFunctions[] = { fnptrExit,
+void    fnptrClear(PhoneBookContact *pb);
+
+void    fnptrAdd(PhoneBookContact *pb);
+void    fnptrSeach(PhoneBookContact *pb);
+
+static const fnptrProcessCommand gCommandsQueueFunctions[5] = { fnptrExit,
+                                                                fnptrHelp,
+                                                                fnptrClear,
                                                                 fnptrAdd,
-                                                                fnptrSeach,
-                                                                fnptrHelp };
+                                                                fnptrSeach};
 
 static void processCurrentCommand(const std::string currCommand, PhoneBookContact *phoneBook) {
     size_t  i = ~0ULL;
 
-    if (currCommand == "HELP")
-        gCommandsQueueFunctions[MAX_COMMANDS](phoneBook);
-    else
-        while (MAX_COMMANDS > ++i)
-            if (gCommandsQueue[i] == currCommand)
-                gCommandsQueueFunctions[i](phoneBook);
+    while (MAX_COMMANDS > ++i)
+        if (gCommandsQueue[i] == currCommand)
+            gCommandsQueueFunctions[i](phoneBook);
 }
 
 void    fnptrExit(PhoneBookContact *pb) { (void)pb; exit(EXIT_SUCCESS); }
-void    fnptrHelp(PhoneBookContact *pb) { (void)pb; std::cout << "HELP: ADD | SEARCH | EXIT" << std::endl; }
+void    fnptrHelp(PhoneBookContact *pb) { (void)pb; std::cout << "HELP: EXIT | CLEAR | ADD | SEARCH" << std::endl; }
+void    fnptrClear(PhoneBookContact *pb) { (void)pb; PhoneBookContact::_maxCurrentlyAddedContacts = 0;}
 
 void    fnptrAdd(PhoneBookContact *pb) {
     std::string temp;
@@ -42,6 +44,10 @@ void    fnptrAdd(PhoneBookContact *pb) {
 static void printAllContacts(PhoneBookContact *pb) {
     size_t  i = ~0ULL;
 
+    std::cout << std::setw(SHORT_OUTPUT_WRAP) << "index" << '|'
+        << std::setw(SHORT_OUTPUT_WRAP) << "First name" << '|'
+        << std::setw(SHORT_OUTPUT_WRAP) << "Last name" << '|'
+        << std::setw(SHORT_OUTPUT_WRAP) << "Nickname" << '|' << std::endl;
     while (PhoneBookContact::_maxCurrentlyAddedContacts > ++i)
         pb[i].printShortWrappedInfo(i + 1);
 }

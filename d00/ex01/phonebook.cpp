@@ -33,6 +33,8 @@ void    PhoneBookContact::printAllInfo(int index) {
         << " Nickname: " << this->nickname << std::endl
         << " Login: " << this->login << std::endl
         << " Postal address: " << this->postalAddress << std::endl
+        << " Email address: " << this->emailAddress << std::endl
+        << " Phone Number: " << this->phoneNumber << std::endl
         << " Birthday date: " << this->birthdayDate << std::endl
         << " Favorite meal: " << this->favoriteMeal << std::endl
         << " Underwear color: " << this->underwearColor << std::endl
