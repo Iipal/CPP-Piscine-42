@@ -56,7 +56,7 @@ void    PhoneBookContact::addNewContactData(void) {
     std::cout << "Enter favorite meal: "; this->favoriteMeal = this->_pbc_getline(&temp);
     std::cout << "Enter underwear color: "; this->underwearColor = this->_pbc_getline(&temp);
     std::cout << "Enter darkest secret: "; this->darkestSecret = this->_pbc_getline(&temp);
-    std::cout << "\tSuccessfully added new contact" << std::endl;
+    std::cout << "\tSuccessfully added new contact." << std::endl;
 
     ++PhoneBookContact::_maxCurrentlyAddedContacts;
 }
