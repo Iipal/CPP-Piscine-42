@@ -11,6 +11,7 @@ class   PhoneBookContact {
 public:
     PhoneBookContact();
     ~PhoneBookContact();
+
     static size_t   _maxCurrentlyAddedContacts;
 
     void    printShortWrappedInfo(int index);
