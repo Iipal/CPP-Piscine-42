@@ -1,7 +1,7 @@
 #include "Pony.hpp"
 
-Pony    ponyOnTheStack(void) { return (Pony("Leyla")); }
-Pony    *ponyOnTheHeap(void) { return (new Pony("Millie")); }
+Pony    ponyOnTheStack(void) { return Pony("Leyla"); }
+Pony    *ponyOnTheHeap(void) { return new Pony("Millie"); }
 
 int main(void) {
     std::cout << "\tCreating pony on the stack: " << std::endl;
