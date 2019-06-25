@@ -1,3 +1,5 @@
+#pragma once
+
 #include "phonebook.hpp"
 
 namespace   commandsQueue {
