@@ -1,11 +1,13 @@
 #include <iostream>
 
-static char *__strupr(char *src) {
-    size_t  i = ~0ULL;
+namespace   megaphone {
+    static char *strupr(char *src) {
+        size_t  i = ~0ULL;
 
-    while (src[++i])
-        src[i] = toupper(src[i]);
-    return (src);
+        while (src[++i])
+            src[i] = toupper(src[i]);
+        return (src);
+    }
 }
 
 int main(int ac, char *av[]) {
@@ -17,7 +19,7 @@ int main(int ac, char *av[]) {
         int i = -1;
 
         while (ac > ++i)
-            std::cout << __strupr(av[i]);
+            std::cout << megaphone::strupr(av[i]);
         std::cout << std::endl;
     }
 }
