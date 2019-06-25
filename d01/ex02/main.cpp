@@ -11,4 +11,7 @@ int main(void) {
     Zombie  *zz = ze.newZombie("Petty");
     zz->announce();
     delete zz;
+
+    Zombie  z = Zombie();
+    z.announce();
 }
