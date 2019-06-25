@@ -6,7 +6,7 @@ namespace   megaphone {
 
         while (src[++i])
             src[i] = toupper(src[i]);
-        return (src);
+        return src;
     }
 }
 
