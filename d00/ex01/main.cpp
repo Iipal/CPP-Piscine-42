@@ -1,5 +1,5 @@
-#include "phonebook.hpp"
-#include "commandsQueue.hpp"
+#include "phoneBookContact.class.hpp"
+#include "commandsQueue.namespace.hpp"
 
 int main(void) {
     PhoneBookContact phoneBook[MAX_PHONE_BOOK_CONTACTS];

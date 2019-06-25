@@ -1,4 +1,4 @@
-#include "commandsQueue.hpp"
+#include "commandsQueue.namespace.hpp"
 
 void    commandsQueue::fnptrExit(PhoneBookContact *pb) { (void)pb; exit(EXIT_SUCCESS); }
 void    commandsQueue::fnptrHelp(PhoneBookContact *pb) {

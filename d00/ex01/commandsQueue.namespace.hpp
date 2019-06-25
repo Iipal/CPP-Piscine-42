@@ -1,6 +1,6 @@
 #pragma once
 
-#include "phonebook.hpp"
+#include "phoneBookContact.class.hpp"
 
 namespace   commandsQueue {
     #define MAX_COMMANDS 7
