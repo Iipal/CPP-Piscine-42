@@ -8,7 +8,7 @@
 # define SHORT_OUTPUT_WRAP 10
 
 class   PhoneBookContact {
-    public:
+public:
     PhoneBookContact();
     ~PhoneBookContact();
     static size_t   _maxCurrentlyAddedContacts;
@@ -18,7 +18,7 @@ class   PhoneBookContact {
 
     void    addNewContactData(void);
 
-    private:
+private:
     std::string _pbc_getline(std::string *cin_dst) {
         std::getline(std::cin, *cin_dst);
         if (std::cin.bad() || std::cin.eof()) {
