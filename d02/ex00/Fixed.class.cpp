@@ -15,10 +15,10 @@ Fixed::~Fixed() {
     std::cout << "Destructor called" << std::endl;
 }
 
-Fixed   &Fixed::operator=(Fixed const &a) {
+Fixed   &Fixed::operator=(Fixed const &b) {
     std::cout << "Assignation operator called" << std::endl;
-    if (this != &a)
-        this->setRawBits(a.getRawBits());
+    if (this != &b)
+        this->setRawBits(b.getRawBits());
     return *this;
 }
 

@@ -8,7 +8,7 @@ public:
     Fixed(Fixed const &src);
     ~Fixed();
 
-    Fixed   &operator=(Fixed const &a);
+    Fixed   &operator=(Fixed const &b);
 
     int     getRawBits(void) const;
     void    setRawBits(int const raw);
