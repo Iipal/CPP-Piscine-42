@@ -19,8 +19,8 @@ int main(int argc, char *argv[]) {
             }
 
             std::string readTmp;
-            std::getline(fileStream, readTmp, '\0');
-            std::cout << readTmp;
+            while (std::getline(fileStream, readTmp))
+                std::cout << readTmp << std::endl;
         }
     }
 }
