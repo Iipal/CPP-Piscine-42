@@ -47,7 +47,7 @@ bool    Fixed::operator<(Fixed const &b) const { return b._value > this->_value;
 bool    Fixed::operator>=(Fixed const &b) const { return b._value <= this->_value; }
 bool    Fixed::operator<=(Fixed const &b) const { return b._value >= this->_value; }
 bool    Fixed::operator==(Fixed const &b) const { return b._value == this->_value; }
-bool    Fixed::operator!=(Fixed const &b) const { return !(b._value == this->_value); }
+bool    Fixed::operator!=(Fixed const &b) const { return b._value != this->_value; }
 
 Fixed   Fixed::operator+(Fixed const &b) const { return Fixed(this->toFloat() + b.toFloat()); };
 Fixed   Fixed::operator-(Fixed const &b) const { return Fixed(this->toFloat() - b.toFloat()); };
