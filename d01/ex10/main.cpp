@@ -7,8 +7,7 @@ int main(int argc, char *argv[]) {
         std::string readTmp;
         while (std::getline(std::cin, readTmp))
             std::cout << readTmp << std::endl;
-    }
-    else {
+    } else {
         int i = -1;
         while (argc > ++i) {
             std::fstream    fileStream(argv[i]);
