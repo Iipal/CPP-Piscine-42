@@ -63,7 +63,7 @@ void    ScavTrap::takeDamage(unsigned int amount) {
 
 void    ScavTrap::beRapired(unsigned int amount) {
     unsigned int _HPAmount = amount, _EPAmount = amount,
-        _toFillFullHP = this->_maxEnergyPoints - this->_hitPoints,
+        _toFillFullHP = this->_maxHitPoints - this->_hitPoints,
         _toFillFullEP = this->_maxEnergyPoints - this->_energyPoints;
 
     if (amount > _toFillFullHP)
