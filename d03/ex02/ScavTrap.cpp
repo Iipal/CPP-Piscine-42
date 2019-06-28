@@ -1,8 +1,5 @@
 #include "ScavTrap.hpp"
-/* _name(name), _hitPoints(100U), _energyPoints(100U), _level(1U),
-    _maxHitPoints(50U), _maxEnergyPoints(50U),
-    _rangedAttackDamage(15U), _meleeAttackDamage(20U),
-     _armorDamageReduction(3U) */
+
 ScavTrap::ScavTrap(const std::string &name) {
     this->_name = name; this->_type = "SCAV-TP";
     this->_hitPoints = 100U; this->_energyPoints = 50U; this->_level = 1U;
@@ -22,10 +19,11 @@ ScavTrap    &ScavTrap::operator=(const ScavTrap &st) {
 
 bool    ScavTrap::challengeNewcomer(std::string const &target) {
     if (this->_energyPoints >= 5) {
-        static const fnptrAttack fnAttacks[] = { &ScavTrap::meleeAttack, &ScavTrap::rangedAttack };
+        static const fnptrAttack fnAttacks[] = { &ScavTrap::meleeAttack, &ScavTrap::rangedAttack,
+            &ScavTrap::linuxCoreAttack, &ScavTrap::fartAttack, &ScavTrap::depressionAttack};
 
         this->_energyPoints -= 5;
-        (this->*fnAttacks[rand() % 2])(target);
+        (this->*fnAttacks[rand() % (sizeof(fnAttacks) / sizeof(*fnAttacks))])(target);
         return true;
     } else {
         std::cout << "SCAV-TP <" << this->_name

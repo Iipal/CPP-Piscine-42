@@ -6,7 +6,7 @@ ClapTrap::ClapTrap()
     _maxHitPoints(100U), _maxEnergyPoints(100U), _linuxCoreAttackDamage(55U),
     _rangedAttackDamage(20U), _meleeAttackDamage(30U), _depressionAttackDamage(1U),
     _fartAttackDamage(1337U), _armorDamageReduction(5U) {
-    std::srand(std::time(NULL));
+    srand(time(NULL));
 }
 ClapTrap::ClapTrap(const std::string &name)
  : _name(name), _type("CLAP_TP"),
@@ -14,11 +14,11 @@ ClapTrap::ClapTrap(const std::string &name)
     _maxHitPoints(100U), _maxEnergyPoints(100U), _linuxCoreAttackDamage(55U),
     _rangedAttackDamage(20U), _meleeAttackDamage(30U), _depressionAttackDamage(1U),
     _fartAttackDamage(1337U), _armorDamageReduction(5U) {
-    std::srand(std::time(NULL));
+    srand(time(NULL));
 }
 
 ClapTrap::ClapTrap(const ClapTrap &ft) { *this = ft; }
-ClapTrap::~ClapTrap() { std::cout << this->_name << " is deFRAGmenting..." << std::endl; }
+ClapTrap::~ClapTrap() { }
 
 ClapTrap    &ClapTrap::operator=(const ClapTrap &ft) {
     if (this != &ft) { *this = ft; }
@@ -28,7 +28,7 @@ ClapTrap    &ClapTrap::operator=(const ClapTrap &ft) {
 void    ClapTrap::linuxCoreAttack(std::string const &target) const {
     std::cout << this->_type << " <" << this->_name << "> attacks <"
         << target << "> by refactoring his core code <" << this->_linuxCoreAttackDamage
-        << "> points of damage ! Torvald if our god !" << std::endl;
+        << "> points of damage ! Torvald is our god !" << std::endl;
 }
 
 void    ClapTrap::rangedAttack(std::string const &target) const {
@@ -85,7 +85,7 @@ void    ClapTrap::beRapired(unsigned int amount) {
         _EPAmount = _toFillFullEP;
     this->_energyPoints += _EPAmount;
 
-    std::cout << this->_type << " <" << this->_name << "> HP is <"
+    std::cout << this->_type << " <" << this->_name << "> now HP is <"
         << this->_hitPoints << "> and EP is <" << this->_energyPoints
         << ">. I feel the live in my ass !" << std::endl;
 }

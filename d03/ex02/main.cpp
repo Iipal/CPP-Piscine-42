@@ -34,11 +34,10 @@ int main(void) {
     std::cout << "\n\t\tSCAV TESTS\n\n" << std::endl;
 
     ScavTrap    neBob("neBob");
-
     cout << neBob << endl;
 
     neBob.takeDamage(42);
-    cout << neBob << endl;
+    cout << neBob << Bob << endl;
 
     neBob.meleeAttack("Bob");
     neBob.rangedAttack("Bob");

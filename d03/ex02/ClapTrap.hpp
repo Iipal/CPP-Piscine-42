@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <ctime>
+#include <cstdlib>
 
 class ClapTrap {
 public:
