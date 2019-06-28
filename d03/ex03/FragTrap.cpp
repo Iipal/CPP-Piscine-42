@@ -23,7 +23,7 @@ bool    FragTrap::vaulthunter_dot_exe(std::string const &target) {
         this->_energyPoints -= 25;
         size_t  attacksQueue = 5;
         while (attacksQueue--)
-            _getRandomAttack();
+            ClapTrap::_callRandomAttack(target);
         return true;
     } else {
         std::cout << this->_type << " <" << this->_name

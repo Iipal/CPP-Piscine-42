@@ -1,9 +1,10 @@
 #include "ClapTrap.hpp"
 
-const ClapTrap::fnptrAttack ClapTrap::fnAttacks[] = {
+const ClapTrap::fnptrAttack ClapTrap::fnAttacks[]  = {
     &ClapTrap::linuxCoreAttack, &ClapTrap::rangedAttack,
     &ClapTrap::meleeAttack, &ClapTrap::depressionAttack,
-    &ClapTrap::fartAttack };
+    &ClapTrap::fartAttack
+};
 
 ClapTrap::ClapTrap()
  : _name("ClapTrap"), _type("CLAP_TP"),
@@ -101,9 +102,8 @@ unsigned int    ClapTrap::getLevel(void) const { return this->_level; }
 std::string     ClapTrap::getName(void) const { return this->_name; }
 std::string     ClapTrap::getType(void) const { return this->_type; }
 
-ClapTrap::fnptrAttack   ClapTrap::_getRandomAttack(void) {
-    return ClapTrap::fnAttacks[rand() %
-        (sizeof(ClapTrap::fnAttacks) / sizeof(*(ClapTrap::fnAttacks)))];
+void    ClapTrap::_callRandomAttack(std::string const &target) {
+    (this->*fnAttacks[rand() % MAX_FN_ATTACKS])(target);
 }
 
 unsigned int    ClapTrap::_attackDamageInRange(unsigned int amount) const {

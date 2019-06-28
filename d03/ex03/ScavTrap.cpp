@@ -19,11 +19,8 @@ ScavTrap    &ScavTrap::operator=(const ScavTrap &st) {
 
 bool    ScavTrap::challengeNewcomer(std::string const &target) {
     if (this->_energyPoints >= 5) {
-        static const fnptrAttack fnAttacks[] = { &ScavTrap::meleeAttack, &ScavTrap::rangedAttack,
-            &ScavTrap::linuxCoreAttack, &ScavTrap::fartAttack, &ScavTrap::depressionAttack};
-
         this->_energyPoints -= 5;
-        (this->*fnAttacks[rand() % (sizeof(fnAttacks) / sizeof(*fnAttacks))])(target);
+        this->_callRandomAttack(target);
         return true;
     } else {
         std::cout << "SCAV-TP <" << this->_name

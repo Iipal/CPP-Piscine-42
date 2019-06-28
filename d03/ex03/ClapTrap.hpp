@@ -4,6 +4,8 @@
 #include <ctime>
 #include <cstdlib>
 
+# define MAX_FN_ATTACKS 5
+
 class ClapTrap {
 public:
     ClapTrap();
@@ -28,6 +30,8 @@ public:
     std::string     getName(void) const;
     std::string     getType(void) const;
 
+    typedef void (ClapTrap::*fnptrAttack)(std::string const&) const;
+    static const fnptrAttack   fnAttacks[MAX_FN_ATTACKS];
 protected:
     unsigned int _hitPoints, _energyPoints, _level,
                 _maxHitPoints, _maxEnergyPoints,
@@ -36,10 +40,8 @@ protected:
                 _fartAttackDamage, _armorDamageReduction;
     std::string _name, _type;
 
-    typedef void (ClapTrap::*fnptrAttack)(std::string const&) const;
 
-    static const fnptrAttack fnAttacks[];
-    static fnptrAttack  _getRandomAttack(void);
+    void    _callRandomAttack(std::string const &);
 
     unsigned int    _attackDamageInRange(unsigned int) const;
 };
