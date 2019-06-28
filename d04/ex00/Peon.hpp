@@ -4,11 +4,11 @@
 
 #include "Victim.hpp"
 
-class Peon : public virtual Victim {
+class Peon : public Victim {
 public:
     Peon(const std::string &name);
     Peon(Peon const &copy);
-    virtual ~Peon();
+    ~Peon();
 
     Peon &operator=(const Peon &copy);
 

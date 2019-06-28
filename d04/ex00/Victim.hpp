@@ -6,7 +6,7 @@ class Victim {
 public:
     Victim(const std::string &name);
     Victim(Victim const &copy);
-    virtual ~Victim();
+    ~Victim();
 
     Victim &operator=(const Victim &copy);
 

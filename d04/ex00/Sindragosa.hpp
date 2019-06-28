@@ -2,11 +2,11 @@
 
 #include "Victim.hpp"
 
-class Sindragosa : public virtual Victim {
+class Sindragosa : public Victim {
 public:
     Sindragosa(const std::string &name);
     Sindragosa(Sindragosa const &copy);
-    virtual ~Sindragosa();
+    ~Sindragosa();
 
     Sindragosa &operator=(const Sindragosa &copy);
 
