@@ -14,9 +14,9 @@ public:
 
     NinjaTrap &operator=(const NinjaTrap &copy);
 
-    bool    ninjaShoebox(const NinjaTrap &nt);
-    bool    ninjaShoebox(const FragTrap &ft);
-    bool    ninjaShoebox(const ScavTrap &st);
+    void    ninjaShoebox(const NinjaTrap &nt);
+    void    ninjaShoebox(const FragTrap &ft);
+    void    ninjaShoebox(const ScavTrap &st);
 };
 
 std::ostream    &operator<<(std::ostream &o, const NinjaTrap &c);
