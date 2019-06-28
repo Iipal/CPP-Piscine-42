@@ -1,10 +1,10 @@
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(const std::string &name)
- : _name(name), _hitPoints(100U), _energyPoints(50U), _level(1U),
+ : _hitPoints(100U), _energyPoints(50U), _level(1U),
     _maxHitPoints(50U), _maxEnergyPoints(50U),
     _rangedAttackDamage(15U), _meleeAttackDamage(20U),
-     _armorDamageReduction(3U) {
+     _armorDamageReduction(3U), _name(name) {
     std::srand(std::time(NULL));
     std::cout << this->_name << " getting ready for some ScavTrap face time!" << std::endl;
 }

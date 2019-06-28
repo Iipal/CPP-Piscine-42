@@ -1,19 +1,17 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap()
- : _name("ClapTrap"), _type("CLAP_TP"),
-    _hitPoints(100U), _energyPoints(100U), _level(1U),
+ : _hitPoints(100U), _energyPoints(100U), _level(1U),
     _maxHitPoints(100U), _maxEnergyPoints(100U), _linuxCoreAttackDamage(55U),
     _rangedAttackDamage(20U), _meleeAttackDamage(30U), _depressionAttackDamage(1U),
-    _fartAttackDamage(1337U), _armorDamageReduction(5U) {
+    _fartAttackDamage(1337U), _armorDamageReduction(5U), _name("ClapTrap"), _type("CLAP_TP") {
     srand(time(NULL));
 }
 ClapTrap::ClapTrap(const std::string &name)
- : _name(name), _type("CLAP_TP"),
-    _hitPoints(100U), _energyPoints(100U), _level(1U),
+ : _hitPoints(100U), _energyPoints(100U), _level(1U),
     _maxHitPoints(100U), _maxEnergyPoints(100U), _linuxCoreAttackDamage(55U),
     _rangedAttackDamage(20U), _meleeAttackDamage(30U), _depressionAttackDamage(1U),
-    _fartAttackDamage(1337U), _armorDamageReduction(5U) {
+    _fartAttackDamage(1337U), _armorDamageReduction(5U), _name(name), _type("CLAP_TP") {
     srand(time(NULL));
 }
 

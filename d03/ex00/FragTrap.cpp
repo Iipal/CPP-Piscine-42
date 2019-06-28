@@ -1,10 +1,10 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap(const std::string &name)
- : _name(name), _hitPoints(100U), _energyPoints(100U), _level(1U),
+ : _hitPoints(100U), _energyPoints(100U), _level(1U),
     _maxHitPoints(100U), _maxEnergyPoints(100U), _linuxCoreAttackDamage(55U),
     _rangedAttackDamage(20U), _meleeAttackDamage(30U), _depressionAttackDamage(1U),
-    _fartAttackDamage(1337U), _armorDamageReduction(5U) {
+    _fartAttackDamage(1337U), _armorDamageReduction(5U), _name(name) {
     std::srand(std::time(NULL));
     std::cout << this->_name << " getting ready for some Fragtrap face time!" << std::endl;
 }
