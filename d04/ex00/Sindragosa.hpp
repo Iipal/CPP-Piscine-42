@@ -11,7 +11,8 @@ public:
     Sindragosa &operator=(const Sindragosa &copy);
 
     virtual void    getPolymorphed(void) const;
-private:
+protected:
+    Sindragosa();
 };
 
 std::ostream    &operator<<(std::ostream &o, const Sindragosa &c);

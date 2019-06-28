@@ -13,7 +13,8 @@ public:
     Peon &operator=(const Peon &copy);
 
     virtual void    getPolymorphed(void) const;
-private:
+protected:
+    Peon();
 };
 
 std::ostream    &operator<<(std::ostream &o, const Peon &c);

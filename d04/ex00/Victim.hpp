@@ -14,6 +14,8 @@ public:
 
     std::string getName(void) const;
 protected:
+    Victim();
+
     std::string _name;
 };
 

@@ -1,6 +1,7 @@
 #include "Peon.hpp"
 #include "Victim.hpp"
 
+Peon::Peon() { }
 Peon::Peon(const std::string &name) : Victim(name) { std::cout << "Zog-zog." << std::endl; }
 Peon::Peon(const Peon &copy) : Victim(copy) { *this = copy; }
 Peon::~Peon() { std::cout << "Bleuark..." << std::endl; }

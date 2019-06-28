@@ -16,6 +16,8 @@ public:
 
     std::string getNameTitle(void) const;
 private:
+    Sorcerer();
+
     std::string _name, _title;
 };
 

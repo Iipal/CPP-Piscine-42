@@ -1,5 +1,6 @@
 #include "Sorcerer.hpp"
 
+Sorcerer::Sorcerer() { }
 Sorcerer::Sorcerer(const std::string &name, const std::string &title) : _name(name), _title(title) {
     std::cout << this->getNameTitle() << ", is born !" << std::endl;
 }
