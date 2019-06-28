@@ -8,7 +8,7 @@ class Sorcerer {
 public:
     Sorcerer(const std::string &name, const std::string &title);
     Sorcerer(Sorcerer const &copy);
-    ~Sorcerer();
+    virtual ~Sorcerer();
 
     Sorcerer &operator=(const Sorcerer &copy);
 
