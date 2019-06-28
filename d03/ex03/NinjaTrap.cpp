@@ -7,35 +7,36 @@ NinjaTrap::NinjaTrap(std::string const &name) {
     this->_linuxCoreAttackDamage = 25U; this->_rangedAttackDamage = 5U;
     this->_depressionAttackDamage = 1U; this->_fartAttackDamage = 1337U;
     this->_meleeAttackDamage = 60U; this->_armorDamageReduction = 0U;
+    std::cout << this->_name << " getting ready for some " << this->_type << " face time!" << std::endl;
 }
 NinjaTrap::NinjaTrap(const NinjaTrap &copy) { *this = copy; }
-NinjaTrap::~NinjaTrap() { }
+NinjaTrap::~NinjaTrap() { std::cout << this->_name << " is deFRAGmenting..." << std::endl; }
 
 NinjaTrap &NinjaTrap::operator=(const NinjaTrap &copy) {
     if (this != &copy) { *this = copy; }
     return *this;
 }
 
-bool    NinjaTrap::ninjaShoebox(NinjaTrap const &nt) {
-    return true;
+void    NinjaTrap::ninjaShoebox(const NinjaTrap &nt) {
+    std::cout << this->_type << " <" << this->_name <<
+        "> It's not will be my first time when i fight with myself, <"
+        << nt.getName() << ">." << std::endl;
 }
 
-bool    NinjaTrap::ninjaShoebox(FragTrap const &ft) {
-    return true;
+void    NinjaTrap::ninjaShoebox(const FragTrap &ft) {
+    std::cout << this->_type << " <" << this->_name <<
+        "> It's will be fun, <" << ft.getName() << "> !110!" << std::endl;
 }
 
-bool    NinjaTrap::ninjaShoebox(ScavTrap const &st) {
-    if (this->_energyPoints >= 5U) {
-        return true;
-    } else  {
-        std::cout << this->_type << " <" << this->_name <<
-            "> I cann't fight with this Scavenging trap <"
-            << st.getName() << "> for free. Give me 5EP." << std::endl;
-    }
-    return false;
+void    NinjaTrap::ninjaShoebox(const ScavTrap &st) {
+    std::cout << this->_type << " <" << this->_name <<
+        "> Do you really want's to fight with me, <"
+        << st.getName() << "> ?" << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &o, const NinjaTrap &c) {
-    o << "Hello, my name is NinjaTrap";
+    o << c.getType() << " <" << c.getName() << "> short info:\t"
+        << " HP: " << c.getHitPoints() << "; EP: " << c.getEnergyPoints()
+        << "; level: " << c.getLevel() << std::endl;
     return o;
 }

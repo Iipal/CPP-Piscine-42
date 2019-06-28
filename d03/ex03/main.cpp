@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+#include "NinjaTrap.hpp"
 
 using std::cout;
 using std::endl;
@@ -56,4 +57,21 @@ int main(void) {
     neBob.beRapired(100);
     cout << neBob << endl;
     neBob.beRapired(1245U);
+
+    NinjaTrap   n("really, it's not Bob");
+
+    cout << n << endl;
+    n.takeDamage(2);
+    n.meleeAttack("all");
+    n.rangedAttack("all");
+
+    cout << n << endl;
+
+    n.ninjaShoebox(Bob);
+    n.ninjaShoebox(neBob);
+    n.ninjaShoebox(n);
+
+    cout << endl;
+    n.beRapired(100);
+    cout << n << endl;
 }

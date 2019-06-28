@@ -10,7 +10,7 @@ ScavTrap::ScavTrap(const std::string &name) {
     std::cout << this->_name << " getting ready for some " << this->_type << " face time!" << std::endl;
 }
 ScavTrap::ScavTrap(const ScavTrap &st) { *this = st; }
-ScavTrap::~ScavTrap() { }
+ScavTrap::~ScavTrap() { std::cout << this->_name << " is deFRAGmenting..." << std::endl; }
 
 ScavTrap    &ScavTrap::operator=(const ScavTrap &st) {
     if (this != &st) { *this = st; }
