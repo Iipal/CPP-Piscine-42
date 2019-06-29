@@ -19,9 +19,10 @@ int main(void) {
     }
 
     ISquad *vlc_copy = vlc;
-    std::cout << std::endl << "After copy(=):" << std::endl;
 
-    for (int i = 0; vlc_copy->getCount() > i; ++i) {
+    std::cout << std::endl << "After copy(=):" << std::endl;
+    int i = -1;
+    while (vlc_copy->getCount() > ++i) {
         ISpaceMarine *cur = vlc_copy->getUnit(i);
         cur->battleCry();
         cur->rangedAttack();
