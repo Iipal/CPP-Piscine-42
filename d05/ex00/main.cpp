@@ -2,13 +2,14 @@
 
 int main(void) {
     try {
-        Bureaucrat b("Barby", 150);
+        Bureaucrat b = Bureaucrat("Barby", 0);
         std::cout << b;
         b += 2;
         std::cout << b;
         b += 147;
         std::cout << b;
-    } catch (std::exception &e) {
-        std::cout << "meh" << std::endl;
+        b += 1;
+    } catch (const std::exception &e) {
+        std::cout << e.what() << std::endl;
     }
 }

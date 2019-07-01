@@ -6,7 +6,7 @@
 class Bureaucrat {
 public:
     Bureaucrat();
-    Bureaucrat(std::string const &name, int grade);
+    Bureaucrat(std::string const &name, int);
     Bureaucrat(Bureaucrat const &copy);
     virtual ~Bureaucrat();
 
@@ -18,7 +18,7 @@ public:
     void operator+=(int const i);
     void operator-=(int const i);
 
-    class GradeTooHighException {
+    class GradeTooHighException : public std::exception {
     public:
         GradeTooHighException();
         GradeTooHighException(GradeTooHighException const &copy);
@@ -28,7 +28,7 @@ public:
 
         virtual const char* what(void) const throw();
     };
-    class GradeTooLowException {
+    class GradeTooLowException : public std::exception {
     public:
         GradeTooLowException();
         GradeTooLowException(GradeTooLowException const &copy);

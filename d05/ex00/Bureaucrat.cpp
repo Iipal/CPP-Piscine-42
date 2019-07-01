@@ -22,14 +22,14 @@ int Bureaucrat::getGrade(void) const { return this->_grade; }
 
 void Bureaucrat::operator+=(int const i) {
     if (1 > this->_grade - i) {
-        throw Bureaucrat::GradeTooLowException();
+        throw Bureaucrat::GradeTooHighException();
     } else {
         this->_grade -= i;
     }
 }
 void Bureaucrat::operator-=(int const i) {
     if (150 < this->_grade + i) {
-        throw Bureaucrat::GradeTooHighException();
+        throw Bureaucrat::GradeTooLowException();
     } else {
         this->_grade += i;
     }
