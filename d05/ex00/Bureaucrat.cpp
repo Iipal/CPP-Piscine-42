@@ -13,7 +13,10 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy) { *this = copy; }
 Bureaucrat::~Bureaucrat() { }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy) {
-    if (this != &copy) { *this = copy; }
+    if (this != &copy) {
+        this->_grade = copy._grade;
+        this->_name = copy._name;
+    }
     return *this;
 }
 

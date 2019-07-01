@@ -39,7 +39,7 @@ public:
         virtual const char* what(void) const throw();
     };
 private:
-    std::string const _name;
+    std::string _name;
     int _grade;
 };
 
