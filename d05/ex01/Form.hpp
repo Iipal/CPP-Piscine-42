@@ -2,7 +2,7 @@
 
 #include "Bureaucrat.hpp"
 
-class Form {
+class Form : public Bureaucrat {
 public:
     Form();
     Form(std::string const &name, int const gradeToSign, int const gradeToExecute);
@@ -11,15 +11,14 @@ public:
 
     Form &operator=(Form const &copy);
 
-    std::string const &getName(void) const;
     bool getIsSign(void) const;
     int getGradeToSign(void) const;
     int getGradeToExecute(void) const;
+    std::string const &getName(void) const;
 
-    bool beSigned(Bureaucrat const&);
-
+    void beSigned(Bureaucrat const&);
 private:
-    std::string const _name;
+    std::string _name;
     bool _isSigned;
     const int _gradeToSign;
     const int _gradeToExecute;

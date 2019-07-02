@@ -3,6 +3,8 @@
 #include <iostream>
 #include <exception>
 
+#include "Form.hpp"
+
 class Bureaucrat {
 public:
     Bureaucrat();
@@ -14,6 +16,8 @@ public:
 
     std::string const &getName(void) const;
     int getGrade(void) const;
+
+    void signForm(Form f);
 
     void operator+=(int const i);
     void operator-=(int const i);

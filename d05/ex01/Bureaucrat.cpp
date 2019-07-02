@@ -15,13 +15,23 @@ Bureaucrat::~Bureaucrat() { }
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy) {
     if (this != &copy) {
         this->_grade = copy._grade;
-        (std::string)this->_name = copy._name;
+        this->_name = copy._name;
     }
     return *this;
 }
 
 const std::string &Bureaucrat::getName(void) const { return this->_name; }
 int Bureaucrat::getGrade(void) const { return this->_grade; }
+
+void Bureaucrat::signForm(Form f) {
+    try {
+        f.beSigned(*this);
+        std::cout << this->_name << " signs " << f.getName() << "." << std::endl;
+    } catch (std::exception &e) {
+        std::cout << this->_name << " cannot sign " << f.getName()
+            << " because " << e.what() << "." << std::endl;;
+    }
+}
 
 void Bureaucrat::operator+=(int const i) {
     if (1 > this->_grade - i) {
