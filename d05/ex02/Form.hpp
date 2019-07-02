@@ -23,7 +23,6 @@ public:
 
     void beSigned(Bureaucrat const&);
 
-    void execute(Bureaucrat const &executor) const;
     virtual void action(void) const = 0;
     virtual void execute(Bureaucrat const &executor) const = 0;
 

@@ -8,7 +8,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() { }
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &copy) { (void)copy; return *this; }
 
 void ShrubberyCreationForm::action(void) const {
-    std::ofstream out(this->getName());
+    std::ofstream out(this->getName() + "_shrubbery");
 
     if (out.is_open()) {
         out << "       _-_" << std::endl        /*        _-_        */
