@@ -1,9 +1,12 @@
 #pragma once
 
-// #include "Bureaucrat.hpp"
+#include <iostream>
+
+#include "Bureaucrat.hpp"
+
 class Bureaucrat;
 
-class Form : public Bureaucrat {
+class Form {
 public:
     Form();
     Form(std::string const &name, int const gradeToSign, int const gradeToExecute);
@@ -18,6 +21,29 @@ public:
     std::string const &getName(void) const;
 
     void beSigned(Bureaucrat const&);
+
+    class GradeTooLowException : public std::exception {
+    public:
+        GradeTooLowException();
+        GradeTooLowException(GradeTooLowException const&);
+        virtual ~GradeTooLowException() throw();
+
+        GradeTooLowException &operator=(GradeTooLowException const &copy);
+
+        virtual const char *what(void) const throw();
+    };
+
+    class GradeTooHighException : public std::exception {
+    public:
+        GradeTooHighException();
+        GradeTooHighException(GradeTooHighException const&);
+        virtual ~GradeTooHighException() throw();
+
+        GradeTooHighException &operator=(GradeTooHighException const &copy);
+
+        virtual const char *what(void) const throw();
+    };
+
 private:
     std::string _name;
     bool _isSigned;
