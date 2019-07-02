@@ -29,7 +29,7 @@ void Bureaucrat::signForm(Form &f) const {
         std::cout << this->_name << " signs " << f.getName() << "." << std::endl;
     } catch (std::exception &e) {
         std::cout << this->_name << " cannot sign " << f.getName()
-            << " because " << e.what() << "." << std::endl;;
+            << " because " << e.what() << std::endl;;
     }
 }
 

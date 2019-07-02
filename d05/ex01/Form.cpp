@@ -23,8 +23,8 @@ int Form::getGradeToExecute(void) const { return this->_gradeToExecute; }
 std::string const &Form::getName(void) const { return this->_name; }
 
 void Form::beSigned(Bureaucrat const &b){
-    if (b.getGrade() > _gradeToSign || b.getGrade() > _gradeToExecute) {
-        Form::GradeTooLowException();
+    if (b.getGrade() > _gradeToSign) {
+        throw Form::GradeTooLowException();
     } else {
         this->_isSigned = true;
     }
