@@ -2,13 +2,9 @@
 
 int main(void) {
     try {
-        Bureaucrat b = Bureaucrat("Barby", 0);
-        std::cout << b;
-        b += 2;
-        std::cout << b;
-        b += 147;
-        std::cout << b;
-        b += 1;
+        Form f = Form("Test", 50, 50);
+        Bureaucrat b = Bureaucrat("Barby", 50);
+        b.signForm(f);
     } catch (const std::exception &e) {
         std::cout << e.what() << std::endl;
     }

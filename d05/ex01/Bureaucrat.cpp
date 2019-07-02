@@ -23,7 +23,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy) {
 const std::string &Bureaucrat::getName(void) const { return this->_name; }
 int Bureaucrat::getGrade(void) const { return this->_grade; }
 
-void Bureaucrat::signForm(Form f) {
+void Bureaucrat::signForm(Form &f) const {
     try {
         f.beSigned(*this);
         std::cout << this->_name << " signs " << f.getName() << "." << std::endl;

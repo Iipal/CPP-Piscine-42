@@ -17,7 +17,7 @@ public:
     std::string const &getName(void) const;
     int getGrade(void) const;
 
-    void signForm(Form f);
+    void signForm(Form &f) const;
 
     void operator+=(int const i);
     void operator-=(int const i);
