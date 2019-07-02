@@ -2,9 +2,10 @@
 
 int main(void) {
     Bureaucrat aa("aa", 1);
-    std::cout << aa;
-    Bureaucrat c = aa;
-    std::cout << c;
+    Bureaucrat b(aa);
+    Bureaucrat c;
+    c = aa;
+    std::cout << b << aa << c;
     try {
         Bureaucrat b = Bureaucrat("Barby", 0);
         std::cout << b;
