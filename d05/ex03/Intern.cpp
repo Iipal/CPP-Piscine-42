@@ -14,7 +14,7 @@ Form *Intern::makePardon(std::string const &target) { return new PresidentialPar
 Form *Intern::makeShrubbery(std::string const &target) { return new ShrubberyCreationForm(target); }
 Form *Intern::makeRobotomy(std::string const &target) { return new RobotomyRequestForm(target); }
 
-Form *Intern::makeForm(std::string const &formRequestType, std::string const &formRequestTarget) throw() {
+Form *Intern::makeForm(std::string const &formRequestType, std::string const &formRequestTarget) {
     Form *out = NULL;
 
     const static fnptrValidFormTypes fnMakeFormTypes[] = { &Intern::makePardon, &Intern::makeShrubbery, &Intern::makeRobotomy };
@@ -28,7 +28,20 @@ Form *Intern::makeForm(std::string const &formRequestType, std::string const &fo
         }
     }
 
-    if (!out) {
-        throw InvalidRequestTypeException();
+    try {
+        if (!out) {
+            throw InvalidRequestTypeException();
+        }
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
     }
+    return out;
 }
+
+Intern::InvalidRequestTypeException::InvalidRequestTypeException() { }
+Intern::InvalidRequestTypeException::InvalidRequestTypeException(InvalidRequestTypeException const &copy) { *this = copy; }
+Intern::InvalidRequestTypeException::~InvalidRequestTypeException() throw() { }
+
+Intern::InvalidRequestTypeException &Intern::InvalidRequestTypeException::operator=(Intern::InvalidRequestTypeException const &copy) { (void)copy; return *this; }
+
+const char *Intern::InvalidRequestTypeException::what(void) const throw() { return "Exception: Invalid form request type."; }

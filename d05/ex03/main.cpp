@@ -1,23 +1,13 @@
 #include "Bureaucrat.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 int main(void) {
-    srand(time(NULL));
-    Form *f[3];
-    f[0] = new ShrubberyCreationForm("home");
-    f[1] = new PresidentialPardonForm("Motherf****r");
-    f[2] = new RobotomyRequestForm("Your ass");
+    Intern  i;
+    Form *f;
 
-    size_t i = ~0ULL;
-    while (3 > ++i) {
-        try {
-            Bureaucrat b = Bureaucrat("Barby", 1);
-            b.signForm(*f[i]);
-            b.executeForm(*f[i]);
-        } catch (const std::exception &e) {
-            std::cout << e.what() << std::endl;
-        }
-    }
+    f = i.makeForm("robotomy", "Bender");
+    std::cout << *f;
+    delete f;
+    f = i.makeForm("trash", "Meh");
+    std::cout << f;
 }

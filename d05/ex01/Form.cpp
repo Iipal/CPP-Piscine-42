@@ -33,7 +33,7 @@ void Form::beSigned(Bureaucrat const &b){
 std::ostream &operator<<(std::ostream &o, Form const &c) {
     o << c.getName() << " form, for sign needs grade: " << c.getGradeToSign()
         << ", for execute needs grade: " << c.getGradeToExecute()
-        << ". Currently " << (c.getIsSign() ? "NOT" : "IS") << " signed." << std::endl;
+        << ". Currently " << (c.getIsSign() ? "IS" : "NOT") << " signed." << std::endl;
     return o;
 }
 

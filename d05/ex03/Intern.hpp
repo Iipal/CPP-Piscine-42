@@ -12,7 +12,7 @@ public:
 
     Intern &operator=(Intern const &copy);
 
-    Form *makeForm(std::string const &formRequestType, std::string const &formRequestTarget) throw();
+    Form *makeForm(std::string const &formRequestType, std::string const &formRequestTarget);
 
     class InvalidRequestTypeException : public std::exception {
     public:
@@ -22,7 +22,7 @@ public:
 
         InvalidRequestTypeException &operator=(InvalidRequestTypeException const &copy);
 
-        const char *what(void) throw();
+        const char *what(void) const throw();
     };
 
 private:
