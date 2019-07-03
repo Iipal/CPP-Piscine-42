@@ -13,20 +13,31 @@ Convert &Convert::operator=(Convert const &copy) {
 void Convert::parseString(void) {
     size_t i = ~0ULL;
 
-    this->charType = dislpayableChar;
+    this->_charType = dislpayableChar;
     while (this->_str[++i] && isblank(this->_str[i])) ;
-    if (!isnumber(this->_str[i])) {
-        this->charType = impossibleDisplayableChar;
+    if (!isdigit(this->_str[i])) {
+        this->_charType = impossibleDisplayableChar;
     } else {
         const int ch = static_cast<int>(_str[i]);
         if (32 > ch || 127 < ch) {
-            this->charType = nonDislpayableChar;
+            this->_charType = nonDislpayableChar;
         }
     }
+
+    if (dislpayableChar == this->_charType) {
+        this->_toPrintCh = this->_str[i];
+    }
+    (void)this->_summaryMaxValue;
 }
 
 void Convert::printChar(void) const {
-    if (this->charType == dislpayableChar) {
-
+    std::cout << "char: ";
+    if (this->_charType == dislpayableChar) {
+        std::cout << static_cast<char>(this->_str[0]);
+    } else if (this->_charType == nonDislpayableChar) {
+        std::cout << "Non displayable";
+    } else if (this->_charType == impossibleDisplayableChar) {
+        std::cout << "impossible";
     }
+    std::cout << std::endl;
 }

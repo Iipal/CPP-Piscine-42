@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <string.h>
 #include <ctype.h>
 
 class Convert {
@@ -19,9 +20,9 @@ public:
 private:
     enum eCharType { dislpayableChar,
                     nonDislpayableChar,
-                impossibleDisplayableChar } charType;
-    bool isPossibleDisplayInt;
+                impossibleDisplayableChar } _charType;
 
     std::string _str;
     double _summaryMaxValue;
+    char _toPrintCh;
 };
