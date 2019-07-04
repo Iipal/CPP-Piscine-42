@@ -1,16 +1,7 @@
 #include "Convert.hpp"
 
 Convert::Convert() { }
-Convert::Convert(std::string const &str) : _str(str), _summaryMaxValue(atof(str.c_str())) { }
-Convert::Convert(Convert const &copy) { *this = copy; }
-Convert::~Convert() { }
-
-Convert &Convert::operator=(Convert const &copy) {
-    if (this != &copy) { *this = copy; }
-    return *this;
-}
-
-void Convert::parseString(void) {
+Convert::Convert(std::string const &str) : _str(str), _summaryMaxValue(atof(str.c_str())) {
     this->_charType = dislpayableChar;
 
     if (!isdigit(this->_str[0])) {
@@ -23,6 +14,13 @@ void Convert::parseString(void) {
             this->_toPrintCh = static_cast<char>(ch);
         }
     }
+}
+Convert::Convert(Convert const &copy) { *this = copy; }
+Convert::~Convert() { }
+
+Convert &Convert::operator=(Convert const &copy) {
+    if (this != &copy) { *this = copy; }
+    return *this;
 }
 
 void Convert::printChar(void) const {
@@ -50,8 +48,11 @@ void Convert::printInt(void) const {
 void Convert::printFloat(void) const {
     std::cout << "float: ";
     if (this->_charType == impossibleDisplayableChar) {
-        if (this->_str == "nan" || this->_str == "-inf" || this->_str == "+inf") {
+        if (this->_isPseudoLiteral(this->_str.c_str())) {
             std::cout << this->_str;
+            if (!this->_str.compare(this->_str.length() - 3, 3, "inf")) {
+                std::cout << 'f';
+            }
         } else {
             std::cout << "impossible";
         }
@@ -62,14 +63,15 @@ void Convert::printFloat(void) const {
 
         const int decF = static_cast<int>(f);
         if (!(decF - f)) { std::cout << ".0"; }
+        std::cout << 'f';
     }
-    std::cout << 'f' << std::endl;
+    std::cout << std::endl;
 }
 
 void Convert::printDouble(void) const {
     std::cout << "double: ";
     if (this->_charType == impossibleDisplayableChar) {
-        if (this->_str == "nan" || this->_str == "-inf" || this->_str == "+inf") {
+        if (this->_isPseudoLiteral(this->_str.c_str())) {
             std::cout << this->_str;
         } else {
             std::cout << "impossible";
@@ -81,4 +83,18 @@ void Convert::printDouble(void) const {
         if (!(decF - this->_summaryMaxValue)) { std::cout << ".0"; }
     }
     std::cout << std::endl;
+}
+
+bool Convert::_isPseudoLiteral(const char *l) const {
+    static const std::string _validPseudoLiterals[] = { "nan", "+nan", "-nan", "inf", "+inf", "-inf",
+                                                    "nanf", "+nanf", "-nanf", "inff", "+inff", "-inff" };
+    const size_t _arrSize = sizeof(_validPseudoLiterals) / sizeof(*_validPseudoLiterals);
+    size_t i = ~0ULL;
+
+    while (_arrSize > ++i) {
+        if (l == _validPseudoLiterals[i]) {
+            return true;
+        }
+    }
+    return false;
 }

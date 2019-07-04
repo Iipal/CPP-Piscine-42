@@ -13,8 +13,6 @@ public:
 
     Convert &operator=(Convert const &copy);
 
-    void parseString(void);
-
     void printChar(void) const;
     void printInt(void) const;
     void printFloat(void) const;
@@ -28,4 +26,6 @@ private:
     std::string _str;
     double _summaryMaxValue;
     char _toPrintCh;
+
+    bool _isPseudoLiteral(const char *l) const;
 };
