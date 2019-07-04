@@ -16,6 +16,9 @@ public:
     void parseString(void);
 
     void printChar(void) const;
+    void printInt(void) const;
+    void printFloat(void) const;
+    void printDouble(void) const;
 
 private:
     enum eCharType { dislpayableChar,
