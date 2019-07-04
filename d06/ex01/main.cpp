@@ -1,17 +1,18 @@
-#include "Serialize.hpp"
 
+#include <iostream>
+
+struct Data { std::string s1; int n; std::string s2; };
 static const char _serializeOutputData[] = { "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" };
 
 void *serialize(void) {
     size_t  i = ~0ULL;
 
     char *data = new char[20];
-    bzero(data, sizeof(char) * 20);
 
     while (8 > ++i) {
         data[i] = _serializeOutputData[rand() % 62];
     }
-    *((int*)data + i) = 2;
+    *((int *)(data + i)) = 2;
     // --i;
     // while (12 > ++i) { data[i] = rand() % 127; }
     i = 11;
@@ -29,22 +30,18 @@ void *serialize(void) {
         }
     }
     std::cout << std::endl;
+    data[19] = 0;
     return reinterpret_cast<void*>(data);
 }
 
 Data *deserialize(void *raw) {
-    char *data = static_cast<char*>(raw);
-
     Data *out = new Data;
-    bzero(out, sizeof(Data));
 
+    std::string _data = std::string(static_cast<char*>(raw), 20);
 
-    std::string msg = data;
-    std::cout << msg.size() << std::endl;
-
-    out->s1 = std::string(data, 0, sizeof(char) * 8);
-    out->s2 = std::string(data, 12, sizeof(char) * 8);
-    out->n = *(reinterpret_cast<int*>(data + 8));
+    out->s1 = std::string(_data, 0, 8);
+    out->s2 = std::string(_data, 12, 8);
+    out->n = *(reinterpret_cast<int*>(&_data[8]));
 
     return out;
 }
