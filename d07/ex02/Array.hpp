@@ -9,10 +9,7 @@ public:
     Array<T>() : _nElements(0), _arrData(NULL) {}
     Array<T>(size_t const n) : _nElements(n), _arrData(NULL) {
         if (n) {
-            _arrData = new T[n];
-
-            size_t i = ~0ULL;
-            while (n > ++i) { _arrData[i] = 0; }
+            _arrData = new T[n]();
         }
     }
     Array<T>(Array<T> const &copy);
@@ -47,14 +44,13 @@ public:
         const char *what(void) const throw() { return "Exception: Out of range."; }
     };
 
-    T &operator[](const size_t i) {
+    T &operator[](size_t const &i) {
         if (this->_nElements <= i) {
             throw Array<T>::OutOfRangeException();
         } else {
             return this->_arrData[i];
         }
     }
-
 private:
     size_t _nElements;
     T *_arrData;
