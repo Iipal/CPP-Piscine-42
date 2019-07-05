@@ -11,7 +11,7 @@ Span &Span::operator=(Span const &copy) {
 }
 
 void Span::addNumber(int n) {
-    if (_maxSpans <= this->_vecSpans.size()) {
+    if (_maxSpans == this->_vecSpans.size()) {
         throw Span::SpanVecOverflowException();
     } else {
         this->_vecSpans.push_back(n);
@@ -22,14 +22,17 @@ int Span::shortestSpan(void) const {
     if (1 >= this->_vecSpans.size()) {
         throw Span::SpanVecSmallException();
     } else {
-        std::vector<int>    _sortedCopy = this->_vecSpans;
+        std::vector<int>    _sortedCopy = std::vector<int>(this->_vecSpans);
         std::sort(_sortedCopy.begin(), _sortedCopy.end());
 
-        size_t i = ~0ULL;
-        while (this->_vecSpans.size() > ++i) {
-        }
+        int min = longestSpan();
 
-        return *std::min_element(this->_vecSpans.begin(), this->_vecSpans.end());
+        for (std::vector<int>::const_iterator it = _sortedCopy.begin(); it != _sortedCopy.end() - 1; it++) {
+            if (*(it + 1) - *it <= min) {
+                min = *(it + 1) - *it;
+            }
+        }
+        return min;
     }
 }
 

@@ -1,13 +1,16 @@
 #include "span.hpp"
 
-int main(void) {
-    Span sp = Span(5);
+#define _MAX 42
 
-    sp.addNumber(5);
-    sp.addNumber(3);
-    sp.addNumber(17);
-    sp.addNumber(9);
-    sp.addNumber(11);
+int main(void) {
+    srand(time(NULL));
+
+    Span sp = Span(_MAX);
+
+    size_t i = ~0ULL;
+    while (_MAX > ++i) {
+        sp.addNumber(rand() % 42);
+    }
 
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
