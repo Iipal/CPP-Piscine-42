@@ -22,17 +22,17 @@ public:
         return *this;
     }
 
-    void push(T const &n) { this->_data.push_front(n); ++this->_dataSize; }
-    void pop(void) { this->_data.pop_front(); --this->_dataSize; }
-    T const &top(void) const { return this->_data.front(); }
-    T       &top(void) { return this->_data.front(); }
-    size_t size(void) const { return this->_data.size(); }
-    bool empty(void) { this->_dataSize = 0; }
+    void     push(T const &n) { this->_data.push_front(n); ++this->_dataSize; }
+    void     pop(void)        { this->_data.pop_front(); --this->_dataSize; }
+    T const &top(void)  const { return this->_data.front(); }
+    T       &top(void)        { return this->_data.front(); }
+    size_t   size(void) const { return this->_data.size(); }
+    bool     empty(void)      { this->_dataSize = 0; }
 
     operator std::stack<T>(void) {
         std::stack<T> s;
 
-        typename std::list<T>::reverse_iterator ti = this->_data.rbegin();
+        typename std::list<T>::reverse_iterator ti  = this->_data.rbegin();
         typename std::list<T>::reverse_iterator tie = this->_data.rend();
 
         while (ti != tie) {
